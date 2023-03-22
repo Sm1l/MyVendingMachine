@@ -1,0 +1,5 @@
+@import "../abstracts/variables.scss";
+
+*:focus {
+  outline: $color-purple solid 1px;
+}
