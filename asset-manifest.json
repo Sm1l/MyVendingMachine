@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/MyVendingMachine/static/css/main.f49481e0.css",
-    "main.js": "/MyVendingMachine/static/js/main.88ac4f7f.js",
+    "main.css": "/MyVendingMachine/static/css/main.e445f1e1.css",
+    "main.js": "/MyVendingMachine/static/js/main.c2467a56.js",
     "index.html": "/MyVendingMachine/index.html",
-    "main.f49481e0.css.map": "/MyVendingMachine/static/css/main.f49481e0.css.map",
-    "main.88ac4f7f.js.map": "/MyVendingMachine/static/js/main.88ac4f7f.js.map"
+    "main.e445f1e1.css.map": "/MyVendingMachine/static/css/main.e445f1e1.css.map",
+    "main.c2467a56.js.map": "/MyVendingMachine/static/js/main.c2467a56.js.map"
   },
   "entrypoints": [
-    "static/css/main.f49481e0.css",
-    "static/js/main.88ac4f7f.js"
+    "static/css/main.e445f1e1.css",
+    "static/js/main.c2467a56.js"
   ]
 }
