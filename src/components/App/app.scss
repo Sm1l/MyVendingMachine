@@ -4,7 +4,12 @@
   justify-content: center;
   text-align: center;
   background: linear-gradient(#fff, #fdf);
-  width: 100vw;
-  height: 100vh;
+  min-width: 100%;
+  min-height: 100vh;
   padding: 50px;
+  // width: 100px;
+  // min-height: 100%;
+  // display: flex;
+  // flex-direction: column;
+  // overflow: hidden;
 }

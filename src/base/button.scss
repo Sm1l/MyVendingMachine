@@ -1,0 +1,14 @@
+@import "../abstracts/variables.scss";
+.button {
+  border: 2px solid $color-dark-purple;
+  padding: 5px 15px;
+  width: 100%;
+  color: $color-dark-purple;
+  &:hover {
+    background-color: $color-purple;
+    color: $color-white;
+  }
+  &:active {
+    background-color: $color-dark-purple;
+  }
+}

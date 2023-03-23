@@ -7,7 +7,7 @@ import "./appContainer.scss";
 const AppContainer = () => {
   return (
     <div className="appContainer">
-      <h1>My Vending Machine</h1>
+      <h1 className="appContainer__title">My Vending Machine</h1>
       <div className="appContainer__box">
         <ProductsContainer />
         <ControlPanel />
