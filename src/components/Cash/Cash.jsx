@@ -14,9 +14,10 @@ const Cash = () => {
         {buttonsValue.map((price) => (
           <AddButton price={price} key={price} />
         ))}
-        {/* map need */}
       </div>
-      <p>{`Money: ${cash}`}</p>
+      <p className="cash__sum">
+        Money: <span className="cash__span">{`${cash}`}</span>
+      </p>
     </div>
   );
 };

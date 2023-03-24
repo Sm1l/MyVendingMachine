@@ -1,12 +1,15 @@
 @import "../../abstracts/variables.scss";
 
-.cash {
+.appcontainer {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 90%;
+  min-height: 90%;
   border: 2px solid $color-dark-purple;
   background: linear-gradient(#fdf, #fff);
 
@@ -19,13 +22,6 @@
     gap: 20px;
     width: 100%;
     padding: 20px;
-    flex-wrap: wrap;
     //  border: 2px solid $color-dark-purple;
-  }
-  &__sum {
-    padding: 0px 0px 20px 0px;
-  }
-  &__span {
-    font-weight: 600;
   }
 }

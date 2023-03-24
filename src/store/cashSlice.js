@@ -4,6 +4,7 @@ const cashSlice = createSlice({
   name: "cash",
   initialState: {
     cash: 0,
+    enoughCash: false,
   },
   reducers: {
     addCash(state, action) {
@@ -11,7 +12,14 @@ const cashSlice = createSlice({
       state.cash = state.cash + action.payload.price;
     },
     spendCash(state, action) {
-      state.cash = state.cash - action.payload.price;
+      if (state.cash < action.payload.price) {
+        state.enoughCash = false;
+        console.log("У вас недостаточно денег");
+        alert("У вас недостаточно денег");
+      } else {
+        state.enoughCash = true;
+        state.cash = state.cash - action.payload.price;
+      }
     },
     //  buyProduct(state, action) {
     //    console.log(action.payload.id);

@@ -1,11 +1,16 @@
 import React from "react";
+import Cash from "components/Cash";
+import BoughtProducts from "components/BoughtProducts";
+import Change from "components/Change";
+
 import "./controlPanel.scss";
-import Cash from "components/Cash/Cash";
 
 const ControlPanel = () => {
   return (
     <div className="controlPanel">
       <Cash />
+      <BoughtProducts />
+      <Change />
     </div>
   );
 };

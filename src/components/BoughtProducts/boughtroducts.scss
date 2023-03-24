@@ -1,19 +1,19 @@
 @import "../../abstracts/variables.scss";
 
-.appContainer {
+.boughtproducts {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  min-width: 90%;
-  min-height: 90%;
   border: 2px solid $color-dark-purple;
+  background: linear-gradient(#fdf, #fff);
+  overflow: hidden;
 
   &__title {
     padding: 20px;
+    align-self: center;
   }
 
   &__box {
@@ -21,6 +21,5 @@
     gap: 20px;
     width: 100%;
     padding: 20px;
-    //  border: 2px solid $color-dark-purple;
   }
 }

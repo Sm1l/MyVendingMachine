@@ -1,27 +1,14 @@
 @import "../../abstracts/variables.scss";
-@import "../../base/button.scss";
-
-.product {
+.change {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  text-align: center;
+  gap: 10px;
   border: 2px solid $color-dark-purple;
-  padding: 20px;
-  flex: 1 auto;
   background: linear-gradient(#fdf, #fff);
-
-  &__title {
-  }
-
-  &__price {
-  }
-
-  &__quantity {
-  }
-
-  &__description {
-  }
+  padding: 20px;
 
   &__button {
     width: 100%;

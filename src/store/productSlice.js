@@ -17,6 +17,7 @@ const productSlice = createSlice({
   name: "products",
   initialState: {
     products: [...initState],
+    boughtProducts: [],
   },
   reducers: {
     // addProduct(state, action) {
@@ -34,11 +35,17 @@ const productSlice = createSlice({
       if (product.quantity <= 0) {
         console.log("Товар закончился");
         alert("Товар закончился");
-      } else {
-        product.quantity = product.quantity - 1;
       }
+      product.quantity = product.quantity - 1;
     },
+    //*-----------------------------------
+    boughtProduct(state, action) {
+      const product = state.products.find((product) => product.id === action.payload.id);
+      state.boughtProducts.push({ title: product.title, quantity: product.quantity });
+      //!add element
+    },
+    //*-----------------------------------
   },
 });
-export const { addProduct, buyProduct } = productSlice.actions;
+export const { addProduct, buyProduct, boughtProduct } = productSlice.actions;
 export default productSlice.reducer;

@@ -2,13 +2,13 @@ import React from "react";
 import ProductsContainer from "components/ProductsContainer";
 import ControlPanel from "components/ControlPanel";
 
-import "./appContainer.scss";
+import "./appcontainer.scss";
 
 const AppContainer = () => {
   return (
-    <div className="appContainer">
-      <h1 className="appContainer__title">My Vending Machine</h1>
-      <div className="appContainer__box">
+    <div className="appcontainer">
+      <h1 className="appcontainer__title">My Vending Machine</h1>
+      <div className="appcontainer__box">
         <ProductsContainer />
         <ControlPanel />
       </div>

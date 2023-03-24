@@ -1,19 +1,38 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { buyProduct } from "store/productSlice";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { buyProduct, boughtProduct } from "store/productSlice";
 import { spendCash } from "store/cashSlice";
 
 import "./product.scss";
 
 const Product = ({ product }) => {
-  const dispatch = useDispatch();
   const id = product.id;
   const price = product.price;
 
+  const dispatch = useDispatch();
+  //*----------------------------------------
+
+  // const [enCash, setEnCash] = useState(false);
+
+  // useEffect(() => {
+  //   if (gel) {
+  //     defaults;
+  //   }
+  // }, [price]);
+
+  //*----------------------------------------
+
+  const state = useSelector((store) => store.cash);
+  const enoughCash = state.enoughCash;
+
   const handleClick = () => {
     // console.log(id);
-    dispatch(buyProduct({ id }));
     dispatch(spendCash({ price }));
+
+    if (enoughCash) {
+      dispatch(buyProduct({ id })); //!как передать актуальное значение?
+      dispatch(boughtProduct({ id })); //!как передать актуальное значение?
+    }
   };
 
   // const closeModalHandleClick = () => {

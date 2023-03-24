@@ -2,13 +2,16 @@
 .button {
   border: 2px solid $color-dark-purple;
   padding: 5px 15px;
-  width: 100%;
-  color: $color-dark-purple;
+  color: $color-purple;
+  background: linear-gradient(#fff, #fdf);
+
   &:hover {
-    background-color: $color-purple;
-    color: $color-white;
+    background: linear-gradient(#fdf, #fff);
+    color: $color-dark-purple;
+    // box-shadow: 5px 5px 5px #ff88ff;
   }
   &:active {
-    background-color: $color-dark-purple;
+    background: linear-gradient(#ff88ff, #ffddff);
+    color: $color-light-purple;
   }
 }
