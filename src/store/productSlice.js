@@ -35,8 +35,9 @@ const productSlice = createSlice({
       if (product.quantity <= 0) {
         console.log("Товар закончился");
         alert("Товар закончился");
+      } else {
+        product.quantity = product.quantity - 1;
       }
-      product.quantity = product.quantity - 1;
     },
     //*-----------------------------------
     boughtProduct(state, action) {
