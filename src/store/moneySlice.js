@@ -8,25 +8,26 @@ const moneySlice = createSlice({
   },
   reducers: {
     depositMoney(state, action) {
-      console.log(state.money);
+      const value = action.payload.price;
+      state.money[value] += 1;
     },
-    pichUpTheChange(state, action) {
-      // state.cash = state.cash + action.payload.price;
+    pickUpTheChange(state, action) {
+      const change = action.payload.change;
+      const money = state.money;
+      console.log("Change is here");
+      // console.log(change);
+      for (let key in money) {
+        console.log(key);
+        console.log(money[key]);
+      }
+
+      // for (let i = money.length - 1; i >= 0; i--) {
+      //   const value = i;
+      //   const quantity = money[i];
+      //   console.log(value);
+      // }
     },
-    // addCash(state, action) {
-    //   state.cash = state.cash + action.payload.price;
-    // },
-    // spendCash(state, action) {
-    //   if (state.cash < action.payload.price) {
-    //     state.enoughCash = false;
-    //     console.log("У вас недостаточно денег");
-    //     alert("У вас недостаточно денег");
-    //   } else {
-    //     state.enoughCash = true;
-    //     state.cash = state.cash - action.payload.price;
-    //   }
-    // },
   },
 });
-export const { depositMoney, pichUpTheChange } = moneySlice.actions;
+export const { depositMoney, pickUpTheChange } = moneySlice.actions;
 export default moneySlice.reducer;
