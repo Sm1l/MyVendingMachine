@@ -39,13 +39,15 @@ const productSlice = createSlice({
         product.quantity = product.quantity - 1;
       }
     },
-    //*-----------------------------------
     boughtProduct(state, action) {
-      const product = state.products.find((product) => product.id === action.payload.id);
-      state.boughtProducts.push({ title: product.title, quantity: product.quantity });
-      //!add element
+      const product = state.products.find((item) => item.id === action.payload.id);
+      const bPr = state.boughtProducts.find((item) => item.title === product.title);
+      if (bPr) {
+        bPr.quantity = bPr.quantity + 1;
+      } else {
+        state.boughtProducts.push({ title: product.title, quantity: 1, id: uuidv4() });
+      }
     },
-    //*-----------------------------------
   },
 });
 export const { addProduct, buyProduct, boughtProduct } = productSlice.actions;

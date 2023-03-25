@@ -6,13 +6,13 @@ import "./productsContainer.scss";
 import Product from "components/Product";
 
 const ProductsContainer = () => {
-  const state = useSelector((store) => store.products);
+  const products = useSelector((store) => store.products.products);
 
   return (
     <div className="productsContainer">
       <h2 className="productsContainer__title">Choose product</h2>
       <div className="productsContainer__box">
-        {state.products.map((product) => (
+        {products.map((product) => (
           <Product product={product} key={product.id} />
         ))}
       </div>

@@ -1,0 +1,14 @@
+@import "../../abstracts/variables.scss";
+
+.boughtproduct {
+  display: flex;
+  //   flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  gap: 10px;
+  padding: 5px 10px;
+  border: 2px solid $color-dark-purple;
+  background: linear-gradient(#fdf, #fff);
+}

@@ -8,6 +8,7 @@ import "./product.scss";
 const Product = ({ product }) => {
   const id = product.id;
   const price = product.price;
+  const quantity = product.quantity;
 
   const dispatch = useDispatch();
   //*----------------------------------------
@@ -26,9 +27,10 @@ const Product = ({ product }) => {
   const enoughCash = state.enoughCash;
 
   const handleClick = () => {
+    if (quantity) {
+      dispatch(spendCash({ price }));
+    }
     // console.log(id);
-    dispatch(spendCash({ price }));
-
     if (enoughCash) {
       dispatch(buyProduct({ id })); //!как передать актуальное значение?
       dispatch(boughtProduct({ id })); //!как передать актуальное значение?
@@ -39,11 +41,11 @@ const Product = ({ product }) => {
   //   dispatch(toggleModalIsVisible());
   // };
   return (
-    <div className="product">
+    <div className={quantity ? "product" : "product empty"}>
       <span className="product__title">{`${product.title}`}</span>
       <span className="product__price">{`Price: ${product.price}`}</span>
       <span className="product__quantity">{`Quantity: ${product.quantity} pcs`}</span>
-      <span className="description">{`Description: ${product.price}`}</span>
+      <span className="description">{`Description: ${product.description}`}</span>
       <button className="product__button button" onClick={handleClick}>
         Buy
       </button>

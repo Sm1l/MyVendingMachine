@@ -18,8 +18,11 @@
 
   &__box {
     display: flex;
+    flex-direction: column;
+    flex-grow: 0;
     gap: 20px;
     width: 100%;
     padding: 20px;
+    overflow-y: auto;
   }
 }
