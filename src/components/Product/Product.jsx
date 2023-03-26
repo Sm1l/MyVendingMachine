@@ -1,51 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { buyProduct, boughtProduct } from "store/productSlice";
 import { spendCash } from "store/cashSlice";
 
 import "./product.scss";
 
-const Product = ({ product }) => {
-  const id = product.id;
-  const price = product.price;
-  const quantity = product.quantity;
-
+const Product = ({ product: { title, price, description, quantity, id } }) => {
   const dispatch = useDispatch();
-  //*----------------------------------------
-
-  // const [enCash, setEnCash] = useState(false);
-
-  // useEffect(() => {
-  //   if (gel) {
-  //     defaults;
-  //   }
-  // }, [price]);
-
-  //*----------------------------------------
-
-  const state = useSelector((store) => store.cash);
-  const enoughCash = state.enoughCash;
+  const cash = useSelector((store) => store.cash.cash);
 
   const handleClick = () => {
-    if (quantity) {
+    if (cash >= price) {
       dispatch(spendCash({ price }));
-    }
-    // console.log(id);
-    if (enoughCash) {
-      dispatch(buyProduct({ id })); //!как передать актуальное значение?
-      dispatch(boughtProduct({ id })); //!как передать актуальное значение?
+      dispatch(buyProduct({ id }));
+      dispatch(boughtProduct({ id }));
+    } else {
+      console.log("У вас недостаточно денег");
+      alert("У вас недостаточно денег");
     }
   };
 
-  // const closeModalHandleClick = () => {
-  //   dispatch(toggleModalIsVisible());
-  // };
   return (
     <div className={quantity ? "product" : "product empty"}>
-      <span className="product__title">{`${product.title}`}</span>
-      <span className="product__price">{`Price: ${product.price}`}</span>
-      <span className="product__quantity">{`Quantity: ${product.quantity} pcs`}</span>
-      <span className="description">{`Description: ${product.description}`}</span>
+      <span className="product__title">{`${title}`}</span>
+      <span className="product__price">{`Price: ${price}`}</span>
+      <span className="product__quantity">{`Quantity: ${quantity} pcs`}</span>
+      <span className="description">{`Description: ${description}`}</span>
       <button className="product__button button" onClick={handleClick}>
         Buy
       </button>
