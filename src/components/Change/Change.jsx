@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pickUpTheChange } from "store/moneySlice";
+import { clearCash } from "store/cashSlice";
+// import {banknotesForChange}
 import "./change.scss";
 
 const Change = () => {
+  // const [banknotes, setBanknotes] = useState([]);
   const change = useSelector((store) => store.cash.cash);
   const dispatch = useDispatch();
-  const handleClick = () => dispatch(pickUpTheChange({ change }));
+
+  const handleClick = () => {
+    dispatch(pickUpTheChange({ change }));
+    dispatch(clearCash());
+  };
 
   return (
     <div className="change">

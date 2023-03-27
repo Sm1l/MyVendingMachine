@@ -32,18 +32,20 @@ const moneySlice = createSlice({
             // if (change >= money.denomination && money.quantity > 0) {
             if (change >= money[i].denomination) {
               if (money[i].quantity > 0) {
-                //!решить вопрос, вроде не работает
-                // console.log("change > money");
                 banknotesForChange.push(money[i].denomination);
                 money[i].quantity -= 1;
+                console.log("denomination:", money[i].denomination, "quantity:", money[i].quantity);
                 const newChange = change - money[i].denomination;
                 return calculateChange(newChange);
               } else {
                 console.log("Купюры", money[i].denomination, "закончились");
+                if (money.at(-1).quantity) {
+                  console.log("К сожалению мы не сможем выдать Вам сдачу, пожалуйста выберите товар!");
+                  //!выдать товаром, подумать!
+                }
                 continue;
               }
             } else if (change < money[i].denomination) {
-              // console.log("change < money");
               continue;
             }
           }
