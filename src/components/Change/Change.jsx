@@ -7,6 +7,7 @@ const Change = () => {
   const change = useSelector((store) => store.cash.cash);
   const dispatch = useDispatch();
   const handleClick = () => dispatch(pickUpTheChange({ change }));
+
   return (
     <div className="change">
       <h2>Change</h2>

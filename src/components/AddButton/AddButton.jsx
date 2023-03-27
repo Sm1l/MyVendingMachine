@@ -7,6 +7,7 @@ import "./addbutton.scss";
 
 const AddButton = ({ price }) => {
   const dispatch = useDispatch();
+
   const handleClick = () => {
     dispatch(addCash({ price }));
     dispatch(depositMoney({ price }));

@@ -5,8 +5,8 @@ import { buttonsValue } from "data/buttonsValue";
 import "./cash.scss";
 
 const Cash = () => {
-  const state = useSelector((store) => store.cash);
-  const cash = state.cash;
+  const cash = useSelector((store) => store.cash.cash);
+
   return (
     <div className="cash">
       <h2 className="cash__title">Cash</h2>
