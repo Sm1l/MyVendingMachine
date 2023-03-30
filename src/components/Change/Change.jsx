@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pickUpTheChange } from "store/moneySlice";
 import { clearCash } from "store/cashSlice";
-// import {banknotesForChange}
 import "./change.scss";
 
 const Change = () => {
-  // const [banknotes, setBanknotes] = useState([]);
   const change = useSelector((store) => store.cash.cash);
   const dispatch = useDispatch();
+  const money = useSelector((store) => store.money);
 
   const handleClick = () => {
     dispatch(pickUpTheChange({ change }));
-    dispatch(clearCash());
+    if (!money.noChange) {
+      //?
+      dispatch(clearCash());
+    }
   };
 
   return (
@@ -21,7 +23,7 @@ const Change = () => {
       <button className="button change__button" onClick={handleClick}>
         Pick up the change
       </button>
-      <span>Change:{change}</span>
+      <span>Change: {money.banknotesForChange}</span>
     </div>
   );
 };

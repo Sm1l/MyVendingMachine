@@ -21,11 +21,11 @@ export const quantityOfMoney = [
   },
   {
     denomination: 5,
-    quantity: 30,
+    quantity: 3,
   },
   {
     denomination: 1,
-    quantity: 35,
+    quantity: 3,
   },
 ];
 // 1000: 20,
