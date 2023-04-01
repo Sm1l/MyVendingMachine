@@ -12,8 +12,8 @@ const cashSlice = createSlice({
     spendCash(state, action) {
       state.cash = state.cash - action.payload.price;
     },
-    clearCash(state) {
-      state.cash = 0;
+    clearCash(state, action) {
+      state.cash = action.payload.tail;
     },
   },
 });

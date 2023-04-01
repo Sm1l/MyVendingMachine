@@ -6,7 +6,7 @@ const moneySlice = createSlice({
   initialState: {
     money: [...quantityOfMoney],
     banknotesForChange: [],
-    noChange: false,
+    tail: 0,
   },
   reducers: {
     depositMoney(state, action) {
@@ -17,49 +17,44 @@ const moneySlice = createSlice({
     //todo------------------------------
 
     pickUpTheChange(state, action) {
-      let change = action.payload.change; //сумма для возврата
-      const money = state.money; //массив доступных денег
+      let cash = action.payload.cash; //*сумма для возврата
+      const money = state.money; //*массив доступных денег
       let banknotesForChange = [];
+      let tail = 0;
 
-      const calculateChange = (change) => {
-        if (change > 0) {
-          console.log("Есть сдача", change, ", идем дальше");
+      const calculateChange = (cash) => {
+        if (cash > 0) {
+          // console.log("Есть сдача", cash, ", идем дальше");
           for (let i = 0; i < money.length; i++) {
-            console.log("внутри цикла");
-            if (change < money[i].denomination) {
-              console.log(`сдача меньше, чем номинал ${money[i].denomination}, двигаемся дальше `);
+            if (cash < money[i].denomination) {
+              // console.log(`сдача меньше, чем номинал ${money[i].denomination}, двигаемся дальше `);
               continue;
-            } else if (change >= money[i].denomination) {
-              //если сдача больше, чем номинал купюры
-              console.log(`сдача больше, чем номинал ${money[i].denomination}, работаем здесь `);
+            } else if (cash >= money[i].denomination) {
+              //*если сдача больше, чем номинал купюры
+              // console.log(`сдача больше, чем номинал ${money[i].denomination}, работаем здесь `);
               if (money[i].quantity > 0) {
-                console.log("купюры есть в наличии");
-                state.noChange = false;
-                // console.log(money[i].quantity);
-                //если купюры есть в наличии
+                // console.log("купюры есть в наличии");
                 money[i].quantity -= 1;
                 banknotesForChange.push(money[i].denomination);
-                // console.log(banknotesForChange);
-                const newChange = change - money[i].denomination;
-                return calculateChange(newChange);
+                return calculateChange(cash - money[i].denomination);
               } else {
-                state.noChange = false;
-                console.log("Купюры", money[i].denomination, "закончились");
+                // console.log("Купюры", money[i].denomination, "закончились");
                 if (money.at(-1).quantity === 0) {
-                  console.log("К сожалению мы не сможем выдать Вам сдачу, пожалуйста выберите товар!");
-                  //!выдать товаром, подумать!
-                  state.noChange = true;
+                  // console.log("К сожалению мы не сможем выдать Вам сдачу, пожалуйста выберите товар!");
+                  tail = cash; //todo остаток от выдачи сдачи
+                  alert("К сожалению мы не сможем выдать Вам сдачу, пожалуйста выберите товар на оставшуюся сумму!");
                   return;
                 }
               }
             }
           }
         }
-        return banknotesForChange;
+        return { banknotesForChange, tail };
       };
-      calculateChange(change);
+      calculateChange(cash);
       // console.log(banknotesForChange);
-      state.banknotesForChange = banknotesForChange.join(", ");
+      state.banknotesForChange = banknotesForChange;
+      state.tail = tail;
     },
 
     //todo----------------------------todo

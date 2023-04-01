@@ -1,21 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pickUpTheChange } from "store/moneySlice";
 import { clearCash } from "store/cashSlice";
 import "./change.scss";
 
 const Change = () => {
-  const change = useSelector((store) => store.cash.cash);
   const dispatch = useDispatch();
+
+  const cash = useSelector((store) => store.cash.cash);
   const money = useSelector((store) => store.money);
+  const banknotesForChange = money.banknotesForChange.join(", ");
+  const tail = money.tail;
+  // const [tail, setTail] = useState(0);
 
   const handleClick = () => {
-    dispatch(pickUpTheChange({ change }));
-    if (!money.noChange) {
-      //?
-      dispatch(clearCash());
+    dispatch(pickUpTheChange({ cash }));
+
+    //!значение tail запаздывает на цикл
+    if (!tail) {
+      dispatch(clearCash({ tail }));
     }
   };
+  //! работает не правильно. Если tail не меняется, то не меняет money
+  useEffect(() => {
+    dispatch(clearCash({ tail }));
+  }, [tail]);
+  // console.log("change");
 
   return (
     <div className="change">
@@ -23,7 +33,7 @@ const Change = () => {
       <button className="button change__button" onClick={handleClick}>
         Pick up the change
       </button>
-      <span>Change: {money.banknotesForChange}</span>
+      <span>Change: {banknotesForChange}</span>
     </div>
   );
 };

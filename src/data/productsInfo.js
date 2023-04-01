@@ -1,13 +1,13 @@
 export const productsInfo = [
   {
     title: "Zaporojec",
-    price: 15,
+    price: 2,
     description: "Is this called a car?",
     quantity: 20,
   },
   {
     title: "Lada",
-    price: 130,
+    price: 15,
     description: "You will be very scared",
     quantity: 16,
   },

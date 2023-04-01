@@ -41,3 +41,20 @@
   }
   // background: linear-gradient(rgb(185, 180, 185), #fff);
 }
+
+@media (max-width: 1200px) {
+  .product {
+    flex: 1 22%;
+  }
+}
+
+@media (max-width: 900px) {
+  .product {
+    flex: 1 48%;
+  }
+}
+@media (max-width: 600px) {
+  .product {
+    flex: 1 100%;
+  }
+}

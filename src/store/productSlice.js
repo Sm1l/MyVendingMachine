@@ -20,16 +20,6 @@ const productSlice = createSlice({
     boughtProducts: [],
   },
   reducers: {
-    // addProduct(state, action) {
-    //   state.products.push({
-    //     title: action.payload.name,
-    //     price: action.payload.price,
-    //     description: action.payload.description,
-    //     quantity: action.payload.quantity,
-    //     id: uuidv4(),
-    //   });
-    // },
-
     buyProduct(state, action) {
       const product = state.products.find((product) => product.id === action.payload.id);
       if (product.quantity <= 0) {

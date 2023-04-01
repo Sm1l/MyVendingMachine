@@ -17,11 +17,11 @@ export const quantityOfMoney = [
   },
   {
     denomination: 10,
-    quantity: 25,
+    quantity: 7,
   },
   {
     denomination: 5,
-    quantity: 3,
+    quantity: 1,
   },
   {
     denomination: 1,
