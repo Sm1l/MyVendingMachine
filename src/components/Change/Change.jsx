@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pickUpTheChange } from "store/moneySlice";
-import { clearCash } from "store/cashSlice";
+import { changeCash } from "store/cashSlice";
 import "./change.scss";
 
 const Change = () => {
@@ -18,12 +18,12 @@ const Change = () => {
 
     //!значение tail запаздывает на цикл
     if (!tail) {
-      dispatch(clearCash({ tail }));
+      dispatch(changeCash({ tail }));
     }
   };
   //! работает не правильно. Если tail не меняется, то не меняет money
   useEffect(() => {
-    dispatch(clearCash({ tail }));
+    dispatch(changeCash({ tail }));
   }, [tail]);
   // console.log("change");
 

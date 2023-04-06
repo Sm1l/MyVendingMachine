@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { addCash } from "store/cashSlice";
-import { depositMoney } from "store/moneySlice";
+import { depositMoney, clearBanknotesForChange } from "store/moneySlice";
 
 import "./addbutton.scss";
 
@@ -11,7 +11,9 @@ const AddButton = ({ price }) => {
   const handleClick = () => {
     dispatch(addCash({ price }));
     dispatch(depositMoney({ price }));
+    dispatch(clearBanknotesForChange());
   };
+
   return (
     <button className="button addbutton" onClick={handleClick}>
       {price}

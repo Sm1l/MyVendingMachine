@@ -56,9 +56,12 @@ const moneySlice = createSlice({
       state.banknotesForChange = banknotesForChange;
       state.tail = tail;
     },
+    clearBanknotesForChange(state) {
+      state.banknotesForChange = [];
+    },
 
     //todo----------------------------todo
   },
 });
-export const { depositMoney, pickUpTheChange } = moneySlice.actions;
+export const { depositMoney, pickUpTheChange, clearBanknotesForChange } = moneySlice.actions;
 export default moneySlice.reducer;
