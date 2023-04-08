@@ -17,9 +17,9 @@ const Change = () => {
     dispatch(pickUpTheChange({ cash }));
 
     //!значение tail запаздывает на цикл
-    if (!tail) {
-      dispatch(changeCash({ tail }));
-    }
+    // if (!tail) {
+    dispatch(changeCash({ tail }));
+    // }
   };
   //! работает не правильно. Если tail не меняется, то не меняет money
   useEffect(() => {
