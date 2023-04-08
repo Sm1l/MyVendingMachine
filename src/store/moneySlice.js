@@ -26,10 +26,11 @@ const moneySlice = createSlice({
         if (cash > 0) {
           // console.log("Есть сдача", cash, ", идем дальше");
           for (let i = 0; i < money.length; i++) {
-            if (cash < money[i].denomination) {
-              // console.log(`сдача меньше, чем номинал ${money[i].denomination}, двигаемся дальше `);
-              continue;
-            } else if (cash >= money[i].denomination) {
+            // if (cash < money[i].denomination) {
+            //   // console.log(`сдача меньше, чем номинал ${money[i].denomination}, двигаемся дальше `);
+            //   continue;
+            // } else
+            if (cash >= money[i].denomination) {
               //*если сдача больше, чем номинал купюры
               // console.log(`сдача больше, чем номинал ${money[i].denomination}, работаем здесь `);
               if (money[i].quantity > 0) {

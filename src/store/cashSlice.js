@@ -15,9 +15,9 @@ const cashSlice = createSlice({
     changeCash(state, action) {
       state.cash = action.payload.tail;
     },
-    clearCash(state) {
-      state.cash = 0;
-    },
+    // clearCash(state) {
+    //   state.cash = 0;
+    // },
   },
 });
 export const { addCash, spendCash, changeCash, clearCash } = cashSlice.actions;
