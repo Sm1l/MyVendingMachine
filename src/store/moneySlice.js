@@ -26,10 +26,6 @@ const moneySlice = createSlice({
         if (cash > 0) {
           // console.log("Есть сдача", cash, ", идем дальше");
           for (let i = 0; i < money.length; i++) {
-            // if (cash < money[i].denomination) {
-            //   // console.log(`сдача меньше, чем номинал ${money[i].denomination}, двигаемся дальше `);
-            //   continue;
-            // } else
             if (cash >= money[i].denomination) {
               //*если сдача больше, чем номинал купюры
               // console.log(`сдача больше, чем номинал ${money[i].denomination}, работаем здесь `);
@@ -41,9 +37,7 @@ const moneySlice = createSlice({
               } else {
                 // console.log("Купюры", money[i].denomination, "закончились");
                 if (money.at(-1).quantity === 0) {
-                  // console.log("К сожалению мы не сможем выдать Вам сдачу, пожалуйста выберите товар!");
-                  tail = cash; //todo остаток от выдачи сдачи
-                  alert("К сожалению мы не сможем выдать Вам сдачу, пожалуйста выберите товар на оставшуюся сумму!");
+                  tail = cash; //* остаток от выдачи сдачи
                   return;
                 }
               }
@@ -57,6 +51,7 @@ const moneySlice = createSlice({
       state.banknotesForChange = banknotesForChange;
       state.tail = tail;
     },
+
     clearBanknotesForChange(state) {
       state.banknotesForChange = [];
     },

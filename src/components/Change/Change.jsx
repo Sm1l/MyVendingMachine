@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pickUpTheChange } from "store/moneySlice";
-import { changeCash } from "store/cashSlice";
+import { returnProductsForChange } from "store/productSlice";
+import { changeCash, changeCashAfter } from "store/cashSlice";
 import "./change.scss";
 
 const Change = () => {
@@ -11,21 +12,29 @@ const Change = () => {
   const money = useSelector((store) => store.money);
   const banknotesForChange = money.banknotesForChange.join(", ");
   const tail = money.tail;
+  const moneyForChange = useSelector((store) => store.products.moneyForChange);
   // const [tail, setTail] = useState(0);
 
   const handleClick = () => {
     dispatch(pickUpTheChange({ cash }));
-
-    //!значение tail запаздывает на цикл
-    // if (!tail) {
-    dispatch(changeCash({ tail }));
-    // }
+    dispatch(returnProductsForChange({ tail })); //? значение tail старое, нет смысла? делаем useEffect
+    // dispatch(changeCash({ tail }));
+    // dispatch(changeCashAfter({ moneyForChange }));
   };
-  //! работает не правильно. Если tail не меняется, то не меняет money
+  //! ??
   useEffect(() => {
     dispatch(changeCash({ tail }));
   }, [tail]);
-  // console.log("change");
+
+  useEffect(() => {
+    if (tail !== 0) {
+      dispatch(returnProductsForChange({ tail }));
+    }
+  }, [tail]);
+
+  useEffect(() => {
+    dispatch(changeCashAfter({ moneyForChange }));
+  }, [moneyForChange, tail]);
 
   return (
     <div className="change">
