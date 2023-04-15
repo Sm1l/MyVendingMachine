@@ -77,6 +77,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-//! работает не правильно. Если tail не меняется, то не меняет money
-
-//!значение tail запаздывает на цикл
+//! ??
