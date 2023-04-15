@@ -15,10 +15,10 @@ const cashSlice = createSlice({
     changeCash(state, action) {
       state.cash = action.payload.tail;
     },
-    clearCash(state) {
-      state.cash = 0;
+    changeCashAfter(state, action) {
+      state.cash = action.payload.moneyForChange;
     },
   },
 });
-export const { addCash, spendCash, changeCash, clearCash } = cashSlice.actions;
+export const { addCash, spendCash, changeCash, changeCashAfter } = cashSlice.actions;
 export default cashSlice.reducer;
