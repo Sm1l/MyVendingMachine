@@ -6,7 +6,10 @@ const moneySlice = createSlice({
   initialState: {
     money: [...quantityOfMoney],
     banknotesForChange: [],
-    tail: 0,
+    // tail: 0,
+    tail: {
+      value: 0,
+    },
   },
   reducers: {
     depositMoney(state, action) {
@@ -44,12 +47,12 @@ const moneySlice = createSlice({
             }
           }
         }
-        return { banknotesForChange, tail };
+        // return { banknotesForChange, tail };
       };
       calculateChange(cash);
       // console.log(banknotesForChange);
       state.banknotesForChange = banknotesForChange;
-      state.tail = tail;
+      state.tail = { value: tail };
     },
 
     clearBanknotesForChange(state) {

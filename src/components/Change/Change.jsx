@@ -12,29 +12,25 @@ const Change = () => {
   const money = useSelector((store) => store.money);
   const banknotesForChange = money.banknotesForChange.join(", ");
   const tail = money.tail;
+  const tailValue = money.tail.value;
   const moneyForChange = useSelector((store) => store.products.moneyForChange);
+  const moneyForChangeValue = moneyForChange.value;
   // const [tail, setTail] = useState(0);
 
   const handleClick = () => {
     dispatch(pickUpTheChange({ cash }));
-    dispatch(returnProductsForChange({ tail })); //? значение tail старое, нет смысла? делаем useEffect
-    // dispatch(changeCash({ tail }));
-    // dispatch(changeCashAfter({ moneyForChange }));
   };
-  //! ??
-  useEffect(() => {
-    dispatch(changeCash({ tail }));
-  }, [tail]);
 
   useEffect(() => {
+    dispatch(changeCash({ tail: tailValue }));
     if (tail !== 0) {
-      dispatch(returnProductsForChange({ tail }));
+      dispatch(returnProductsForChange({ tail: tailValue }));
     }
   }, [tail]);
 
   useEffect(() => {
-    dispatch(changeCashAfter({ moneyForChange }));
-  }, [moneyForChange, tail]);
+    dispatch(changeCashAfter({ moneyForChange: moneyForChangeValue }));
+  }, [moneyForChange]);
 
   return (
     <div className="change">

@@ -21,7 +21,7 @@ const productSlice = createSlice({
   initialState: {
     products: [...initProducts],
     boughtProducts: [],
-    moneyForChange: 0,
+    moneyForChange: { value: 0 },
   },
   reducers: {
     //*уменьшает количество
@@ -48,6 +48,7 @@ const productSlice = createSlice({
     returnProductsForChange(state, action) {
       let tail = action.payload.tail;
       const products = state.products;
+      let moneyForChange = 0;
       // const productsForSort = state.products;
       //! ??
       //!изменяет products!!!(в этом нет необходимости, но...)
@@ -72,13 +73,13 @@ const productSlice = createSlice({
               } else {
                 state.boughtProducts.push({ title: product.title, quantity: 1, id: uuidv4() });
               }
-              return recursion(tail);
             }
           }
+          moneyForChange = tail;
         }
       };
       recursion(tail);
-      state.moneyForChange = tail;
+      state.moneyForChange = { value: moneyForChange };
     },
   },
 });
